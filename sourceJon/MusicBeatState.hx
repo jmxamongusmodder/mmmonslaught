@@ -27,7 +27,7 @@ class MusicBeatState extends FlxUIState
 
 	override function create()
 	{
-		(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
+		//(cast (Lib.current.getChildAt(0), Main));
 
 		if (transIn != null)
 			trace('reg ' + transIn.region);
@@ -63,15 +63,13 @@ class MusicBeatState extends FlxUIState
 			{
 				if (currentColor >= array.length)
 					currentColor = 0;
-				(cast (Lib.current.getChildAt(0), Main)).changeFPSColor(array[currentColor]);
+				//(cast (Lib.current.getChildAt(0), Main)).changeFPSColor(array[currentColor]);
 				currentColor++;
 				skippedFrames = 0;
 			}
 			else
 				skippedFrames++;
 
-		if ((cast (Lib.current.getChildAt(0), Main)).getFPSCap != FlxG.save.data.fpsCap)
-			(cast (Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
 
 		super.update(elapsed);
 	}
