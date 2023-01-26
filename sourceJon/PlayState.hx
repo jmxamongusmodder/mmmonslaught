@@ -830,7 +830,7 @@ class PlayState extends MusicBeatState
 				bg.scrollFactor.set(0.1, 0.1);
 				add(bg);
 				
-				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bob/norfloor'));
+				var ground:FlxSprite = new FlxSprite(99, 4).loadGraphic(Paths.image('bob/norfloor'));
 				ground.updateHitbox();
 				ground.active = false;
 				ground.antialiasing = true; //julienwasnothere
@@ -839,7 +839,7 @@ class PlayState extends MusicBeatState
 				var julie:FlxSprite = new FlxSprite(-99, 9).loadGraphic(Paths.image('bob/julienwasnothere'));
 				julie.updateHitbox();
 				julie.active = false;
-                                julie.visible = false;
+                                julie.visible = true;
 				julie.antialiasing = true; //julienwasnothere
 				add(julie);
 					
