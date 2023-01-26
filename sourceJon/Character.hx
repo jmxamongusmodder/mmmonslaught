@@ -596,6 +596,21 @@ class Character extends FlxSprite
 				addOffset("singRIGHT", -89, -51);
 				addOffset("singDOWN", 40, -120);
 				addOffset("Ugh", 71, -40);
+			case 'mron':
+				tex = Paths.getSparrowAtlas('bob/msron');
+				frames = tex;
+				animation.addByPrefix('idle', "idle", 24);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('cheer', 'idle', 24, false);
+				addOffset('idle');
+				addOffset("singUP", 42, 38);
+				addOffset("singLEFT", 98, -27);
+				addOffset("singRIGHT", -89, -51);
+				addOffset("singDOWN", 40, -120);
+				addOffset("Ugh", 71, -40);
 			case 'little-man':
 					tex = Paths.getSparrowAtlas('Small_Guy');
 					frames = tex;

@@ -317,6 +317,8 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('run/DumbDialogPhloxMade'));
 			case 'ron':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('ron/ronDialogue'));
+			case 'brunj':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('brunj/ronDialoguue'));
 			case 'trouble':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('trouble/assfart'));
 			case 'onslaught':
@@ -792,7 +794,7 @@ class PlayState extends MusicBeatState
 					add(deadron);
 					
 				}
-			case 'ron' | 'little-man':
+			case 'ron':
 				{
 				defaultCamZoom = 0.9;
 				curStage = 'ron';
@@ -815,7 +817,7 @@ class PlayState extends MusicBeatState
 				add(ground);
 					
 				}
-			case 'nur' | 'halagram' | 'brunj':
+			case 'nur' | 'halagram' | 'brunj' | 'little-man':
 				{
 				defaultCamZoom = 0.9;
 				curStage = 'nor';
@@ -1236,6 +1238,8 @@ class PlayState extends MusicBeatState
 					schoolIntro(doof);
 				case 'ron':
 					RonIntro(doof);
+				case 'brunj':
+					schoolIntro(doof);
 				default:
 					startCountdown();
 			}
@@ -2782,7 +2786,7 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
-					if (tempSong == 'ron') 
+					if (tempSong == 'brunj') 
 					{
 						LoadingState.loadAndSwitchState(new VideoState(Paths.video('ronEndCutscene'), new PlayState()));
 					} else {
@@ -4051,57 +4055,6 @@ class PlayState extends MusicBeatState
 				WindowGoBack();
 			VisibleNotes();
 		}
-		if (curSong == 'Brunj')
-		{
-			if (curBeat == 7)
-			{
-			       var bruh:FlxSprite = new FlxSprite();
-			     bruh.loadGraphic(Paths.image('bob/longbob'));
-			       bruh.antialiasing = true;
-			             bruh.active = false;
-			          bruh.scrollFactor.set();
-			        bruh.screenCenter();
-			     add(bruh);
-			          FlxTween.tween(bruh, {alpha: 0},1, {
-				ease: FlxEase.cubeInOut,
-				onComplete: function(twn:FlxTween)
-				{
-					bruh.destroy();
-				}
-			       });
-			}
-			else if (curBeat == 14)
-			{
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
-				julie.visible = true;
-			}
-			else if (curBeat == 32)
-			{
-				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.expoOut,});
-				julie.visible = false;
-                               // ground.visible = false; // wait why hide it? oh right....
-			}
-			else if (curBeat == 35)
-			{
-				FlxTween.tween(FlxG.camera, {zoom: 2.1}, 0.4, {ease: FlxEase.expoOut,});
-                             //   ground.visible = true;
-                                // test stuff that wasnt made for ron
-			        windowX = Lib.application.window.x;
-			        windowY = Lib.application.window.y;
-			        IsNoteSpinning = true;
-			}
-			else if (curBeat == 42)
-			{
-				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 0.5, {ease: FlxEase.expoOut,});
-			        IsNoteSpinning = false;
-                                spotifyadshort();
-			}
-			else if (curBeat == 56)
-			{
-				FlxTween.tween(FlxG.camera, {zoom: 2.3}, 0.6, {ease: FlxEase.expoOut,});
-                                trace("this is the final curbeat");
-			}
-		}
 		switch (curStage)
 		{
 			case 'school':
@@ -4182,7 +4135,7 @@ class PlayState extends MusicBeatState
 		}
 	function spotifyadshort()
 		{
-			var thx:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('littleman/spotifyad'));
+			var thx:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('bob/spotifyad'));
 			thx.updateHitbox();
 			thx.scrollFactor.set(0, 0);
 			thx.antialiasing = true;
