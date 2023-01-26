@@ -79,6 +79,13 @@ class DialogueBox extends FlxSpriteGroup
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
+			case 'sunshine':
+				box = new FlxSprite(0, 0);
+				hasDialog = true;
+				box.frames = Paths.getSparrowAtlas('bob/dialogueBox-bob');
+				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
+				box.animation.addByPrefix('bobCRUSH', 'Bob DESTROYS the dialog box DAYUMNNNN', 24, false);
 			case 'withered':
 				box = new FlxSprite(0, 0);
 				hasDialog = true;
@@ -363,6 +370,27 @@ class DialogueBox extends FlxSpriteGroup
 		}
 		
 		if (dialogueList[0] == 'this is the part where bob absolubley destroys the dialog box like an awesome person' && curCharacter == 'dad')
+		{
+			caniskip == false;
+			box.animation.play('bobCRUSH');
+			portraitLeft.visible = false;
+			portraitGloop.visible = false;
+			portraitRight.visible = false;
+			portraitRightBF.visible = false;
+			portraitRightGF.visible = false;
+			trace(dialogueList[0]);
+			new FlxTimer().start(0.6, function(tmr:FlxTimer)
+			{
+				FlxG.sound.play(Paths.sound('Squeaky'));
+				swagDialogue.resetText(dialogueList[0]);
+				new FlxTimer().start(0.7, function(tmr:FlxTimer)
+				{
+					FlxG.sound.playMusic(Paths.music('ByYourSide'));
+					caniskip == true;
+				});
+			});
+		}
+		else if (dialogueList[0] == 'this is the part where bob absolubley destroys the dialog box like an awesome person sunshine version' && curCharacter == 'dad')
 		{
 			caniskip == false;
 			box.animation.play('bobCRUSH');

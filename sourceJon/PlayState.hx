@@ -201,6 +201,9 @@ class PlayState extends MusicBeatState
 	
 	// Will decide if she's even allowed to headbang at all depending on the song
 	private var allowedToHeadbang:Bool = false;
+        //FRICK YOU PHLOX
+	var julie:FlxSprite;
+	var bobaether:FlxSprite;
 	override public function create()
 	{
 
@@ -810,6 +813,33 @@ class PlayState extends MusicBeatState
 				ground.active = false;
 				ground.antialiasing = true;
 				add(ground);
+					
+				}
+			case 'nur' | 'halagram | 'brunj':
+				{
+				defaultCamZoom = 0.9;
+				curStage = 'nor';
+				var bg:FlxSprite = new FlxSprite(-100,10).loadGraphic(Paths.image('bob/ronbgalt'));
+				bg.updateHitbox();
+				bg.scale.x = 1.2;
+				bg.scale.y = 1.2;
+				bg.active = false;
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.1, 0.1);
+				add(bg);
+				
+				var ground:FlxSprite = new FlxSprite(-537, -250).loadGraphic(Paths.image('bob/norfloor'));
+				ground.updateHitbox();
+				ground.active = false;
+				ground.antialiasing = true; //julienwasnothere
+				add(ground);
+
+				var julie:FlxSprite = new FlxSprite(-99, 9).loadGraphic(Paths.image('bob/julienwasnothere'));
+				julie.updateHitbox();
+				julie.active = false;
+                                julie.visible = false;
+				julie.antialiasing = true; //julienwasnothere
+				add(julie);
 					
 				}
 			default:
@@ -4021,6 +4051,57 @@ class PlayState extends MusicBeatState
 				WindowGoBack();
 			VisibleNotes();
 		}
+		if (curSong == 'Brunj')
+		{
+			if (curBeat == 7)
+			{
+			       var bruh:FlxSprite = new FlxSprite();
+			     bruh.loadGraphic(Paths.image('bob/longbob'));
+			       bruh.antialiasing = true;
+			             bruh.active = false;
+			          bruh.scrollFactor.set();
+			        bruh.screenCenter();
+			     add(bruh);
+			          FlxTween.tween(bruh, {alpha: 0},1, {
+				ease: FlxEase.cubeInOut,
+				onComplete: function(twn:FlxTween)
+				{
+					bruh.destroy();
+				}
+			       });
+			}
+			else if (curBeat == 14)
+			{
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.4, {ease: FlxEase.expoOut,});
+				julie.visible = true;
+			}
+			else if (curBeat == 32)
+			{
+				FlxTween.tween(FlxG.camera, {zoom: 1.5}, 0.3, {ease: FlxEase.expoOut,});
+				julie.visible = false;
+                                ground.visible = false; // wait why hide it? oh right....
+			}
+			else if (curBeat == 35)
+			{
+				FlxTween.tween(FlxG.camera, {zoom: 2.1}, 0.4, {ease: FlxEase.expoOut,});
+                                ground.visible = true;
+                                // test stuff that wasnt made for ron
+			        windowX = Lib.application.window.x;
+			        windowY = Lib.application.window.y;
+			        IsNoteSpinning = true;
+			}
+			else if (curBeat == 42)
+			{
+				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 0.5, {ease: FlxEase.expoOut,});
+			        IsNoteSpinning = false;
+                                spotifyadshort();
+			}
+			else if (curBeat == 56)
+			{
+				FlxTween.tween(FlxG.camera, {zoom: 2.3}, 0.6, {ease: FlxEase.expoOut,});
+                                trace("this is the final curbeat");
+			}
+		}
 		switch (curStage)
 		{
 			case 'school':
@@ -4097,6 +4178,18 @@ class PlayState extends MusicBeatState
 			{
 				add(thx);
 				FlxG.camera.fade(FlxColor.BLACK, 1, true);
+			}, true);
+		}
+	function spotifyadshort()
+		{
+			var thx:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('littleman/spotifyad'));
+			thx.updateHitbox();
+			thx.scrollFactor.set(0, 0);
+			thx.antialiasing = true;
+			FlxG.camera.fade(FlxColor.BLACK, 0.6, false, function()
+			{
+				add(thx);
+				FlxG.camera.fade(FlxColor.BLACK, 0.6, true);
 			}, true);
 		}
 	function WindowGoBack()
